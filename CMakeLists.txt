@@ -3,10 +3,6 @@ project(SmartSquareGame)
 
 set(CMAKE_CXX_STANDARD 20)
 
-set(SFML_DIR "SFML/lib/cmake/SFML")
-set(SFML_ROOT "SFML")
-find_package(SFML COMPONENTS system window graphics REQUIRED)
-
 add_executable(
         SmartSquareGame Game/main.cpp
         Game/Game.cpp Game/Game.hpp
@@ -22,4 +18,9 @@ add_executable(
         Game/GameObjects/Finish.cpp Game/GameObjects/Finish.hpp
         Game/Level.cpp Game/Level.hpp)
 
+set(SFML_STATIC_LIBRARIES TRUE)
+set(SFML_DIR C:/SFML/lib/cmake/SFML)
+find_package(SFML COMPONENTS system window graphics REQUIRED)
+
+include_directories(c:/SFML/include)
 target_link_libraries(SmartSquareGame sfml-system sfml-window sfml-graphics)
