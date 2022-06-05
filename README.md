@@ -1,5 +1,6 @@
 # SmartSquareGame
 > The repository contains a 2D game for which an artificial intelligence algorithm based on Reinforcement Learning (Deep Q-Learning) will be created.
+> Version with Reinforcement Learning (work in progress): https://github.com/dkwapisz/SmartSquareRL
 
 ## Table of contents
 - [General](#General)
@@ -36,6 +37,3 @@ The player's goal is to collect all the coins in the level and reach the exit ma
 
 ## Map creating
 A Python script was used to create the map. For more information, see [MapHelper.md](MapHelper.md).
-
-## How to open
-TBD
