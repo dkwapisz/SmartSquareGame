@@ -3,7 +3,7 @@
 Player::Player() = default;
 
 Player::Player(float positionX, float positionY) {
-    this -> moveSpeed = 2.f;
+    this -> moveSpeed = 5.f;
     this -> shotCooldown = 10;
     this -> shotCooldownMax = 10;
     this -> shotSpeed = 4.f;

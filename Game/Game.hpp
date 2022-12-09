@@ -32,7 +32,7 @@ private:
     void updateLabels();
     void updateWindowEvents();
     void updatePlayerInput();
-    void update();
+    void gameLoop();
 
     void renderLabels();
     void render();

@@ -19,7 +19,7 @@ Game::~Game() {
 void Game::loadFont() {
     this -> font = new sf::Font();
 
-    if (!font -> loadFromFile("..\\Game\\Upheaval-font.ttf")) {
+    if (!font -> loadFromFile("../Game/Upheaval-font.ttf")) {
         std::cout << "Font cannot be loaded";
     }
 }
@@ -79,19 +79,6 @@ void Game::renderLabels() {
     this -> window -> draw(*coinCountLabel);
 }
 
-void Game::run() {
-    while (this -> window -> isOpen()) {
-        if (!gameFinished) {
-            this -> update();
-            this -> render();
-        } else {
-            this -> window -> close();
-            delete this;
-            return;
-        }
-    }
-}
-
 void Game::updateWindowEvents() {
     sf::Event e;
 
@@ -137,11 +124,23 @@ void Game::inputShooting() {
     }
 }
 
-void Game::update() {
+void Game::run() {
+    while (this -> window -> isOpen()) {
+        if (!gameFinished) {
+            this -> gameLoop();
+            this -> render();
+        } else {
+            this -> window -> close();
+            delete this;
+            return;
+        }
+    }
+}
+
+void Game::gameLoop() {
     this -> updateWindowEvents();
     this -> updatePlayerInput();
     this -> updateLabels();
-
     this -> level -> updateBullets();
     this -> level -> updateDangerMovement();
 
@@ -162,9 +161,7 @@ void Game::update() {
 
 void Game::render() {
     this -> window -> clear();
-
     this -> level -> renderGameObjects(*this -> window);
-    renderLabels();
-
+    this -> renderLabels();
     this -> window -> display();
 }
