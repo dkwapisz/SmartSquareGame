@@ -124,44 +124,43 @@ void Game::inputShooting() {
     }
 }
 
-void Game::run() {
-    while (this -> window -> isOpen()) {
-        if (!gameFinished) {
-            this -> gameLoop();
-            this -> render();
-        } else {
-            this -> window -> close();
-            delete this;
-            return;
+    void Game::gameLoop() {
+        while (this -> window -> isOpen()) {
+            if (!gameFinished) {
+                this -> update();
+                this -> render();
+            } else {
+                this -> window -> close();
+                delete this;
+                return;
+            }
         }
     }
-}
 
-void Game::gameLoop() {
-    this -> updateWindowEvents();
-    this -> updatePlayerInput();
-    this -> updateLabels();
-    this -> level -> updateBullets();
-    this -> level -> updateDangerMovement();
+    void Game::update() {
+        this -> updateWindowEvents();
+        this -> updatePlayerInput();
+        this -> updateLabels();
+        this -> level -> updateBullets();
+        this -> level -> updateDangerMovement();
 
-    if (this -> level -> isLevelFinished()) {
-        int lastLevelNum = this -> level -> getLevelNumber();
-        int mapsCount = this -> level -> getMapsCount();
+        if (this -> level -> isLevelFinished()) {
+            int lastLevelNum = this -> level -> getLevelNumber();
+            int mapsCount = this -> level -> getMapsCount();
 
-        if (lastLevelNum + 1 > mapsCount) {
-            std::cout << "Player wins \n";
-            gameFinished = true;
-        } else {
-            delete this -> level;
-            this -> level = new Level(lastLevelNum + 1);
+            if (lastLevelNum + 1 > mapsCount) {
+                std::cout << "Player wins \n";
+                gameFinished = true;
+            } else {
+                delete this -> level;
+                this -> level = new Level(lastLevelNum + 1);
+            }
         }
-
     }
-}
 
-void Game::render() {
-    this -> window -> clear();
-    this -> level -> renderGameObjects(*this -> window);
-    this -> renderLabels();
-    this -> window -> display();
-}
+    void Game::render() {
+        this -> window -> clear();
+        this -> level -> renderGameObjects(*this -> window);
+        this -> renderLabels();
+        this -> window -> display();
+    }

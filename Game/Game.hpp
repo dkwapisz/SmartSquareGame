@@ -32,7 +32,7 @@ private:
     void updateLabels();
     void updateWindowEvents();
     void updatePlayerInput();
-    void gameLoop();
+    void update();
 
     void renderLabels();
     void render();
@@ -40,5 +40,5 @@ private:
 public:
     Game();
     virtual ~Game();
-    void run();
+    void gameLoop();
 };
