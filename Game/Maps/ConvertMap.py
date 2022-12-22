@@ -1,3 +1,6 @@
+# Author:       Dawid Kwapisz (dkwapisz99@gmail.com, dkwapisz@student.agh.edu.pl)
+# License:      GPLv3
+
 from PIL import Image
 
 image = Image.open("map3.png")

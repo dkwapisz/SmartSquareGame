@@ -1,3 +1,6 @@
+// Author:       Dawid Kwapisz (dkwapisz99@gmail.com, dkwapisz@student.agh.edu.pl)
+// License:      GPLv3
+
 #ifndef BULLET_HPP
 #define BULLET_HPP
 
